@@ -1,110 +1,150 @@
-import React, { useEffect } from "react"
-import Glide from "@glidejs/glide"
+import React, { useEffect } from 'react';
+import flowervase1 from '../assets/flowervase1.svg';
+import { IoArrowForward } from "react-icons/io5";
+import Glide from '@glidejs/glide';
+import '@glidejs/glide/dist/css/glide.core.min.css';
+import '@glidejs/glide/dist/css/glide.theme.min.css';
 
-export default function Carousel() {
+const Carousel = () => {
   useEffect(() => {
-    const slider = new Glide(".glide-02", {
-      type: "carousel",
-      focusAt: "center",
-      perView: 3,
-      autoplay: 3500,
-      animationDuration: 700,
-      gap: 24,
-      classNames: {
-        nav: {
-          active: "[&>*]:bg-wuiSlate-700",
-        },
-      },
+    const glide = new Glide('.glide', {
+      type: 'carousel',
+      startAt: 0,
+      perView: 1,
+      autoplay: false, // Disable autoplay for testing
       breakpoints: {
-        1024: {
-          perView: 2,
-        },
-        640: {
-          perView: 1,
-        },
-      },
-    }).mount()
+        768: { perView: 1 }, // 1 slide on mobile
+        1024: { perView: 1 } // 1 slide on medium screens
+      }
+    });
 
+    glide.mount();
+
+    const handleResize = () => {
+      glide.update(); // Update Glide on resize
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup on unmount
     return () => {
-      slider.destroy()
-    }
-  }, [])
+      glide.destroy();
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
-    <>
-      {/*<!-- Component: Carousel with indicators inside --> */}
-      <div className="glide-02 relative w-full">
-        {/*    <!-- Slides --> */}
-        <div className="overflow-hidden" data-glide-el="track">
-          <ul className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
-            <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-03.jpg"
-                className="m-auto max-h-full w-full max-w-full"
-              />
-            </li>
-            <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-04.jpg"
-                className="m-auto max-h-full w-full max-w-full"
-              />
-            </li>
-            <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-05.jpg"
-                className="m-auto max-h-full w-full max-w-full"
-              />
-            </li>
-            <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-01.jpg"
-                className="m-auto max-h-full w-full max-w-full"
-              />
-            </li>
-            <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-02.jpg"
-                className="m-auto max-h-full w-full max-w-full"
-              />
-            </li>
-          </ul>
+    <div>
+      {/* Hero section */}
+      <div className="glide w-full h-auto md:bg-[#F5F5F5] bg-[#E4F2E7] rounded-lg md:rounded-none mt-[10px] p-4 md:p-8 ">
+        <div className="glide__track" data-glide-el="track">
+          <div className="glide__slides">
+            {/* Slide 1 */}
+            <div className="glide__slide flex flex-row">
+              <div className="my-auto md:my-0 flex-grow font-custom mb-6 md:mb-0 text-start">
+                <p className="w-full text-[10px] md:text-base mt-0 md:mt-20">Welcome to GreenShop</p>
+                <div className="w-full md:w-[530px] h-auto">
+                  <p className="text-xl md:text-[70px] font-black leading-tight">LET’S MAKE A BETTER <span className='text-primary-color'>PLANET</span></p>
+                </div>
+                <div className="w-full md:w-[550px]">
+                  <p className="hidden md:block md:text-sm ">We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!</p>
+                  <p className='block md:hidden text-[10px]'> We are an online plant shop offering a wide range </p>
+                </div>
+                <button className='hidden md:block w-[140px] h-[40px] rounded-lg bg-primary-color text-white mt-[55px] font-custom font-bold text-base'>SHOP NOW</button>
+                <div className='flex md:hidden  flex-row mt-2'>
+                  <span className='text-primary-color'>SHOP NOW</span>
+                  <IoArrowForward size={20} color='#4BA358'/>
+                </div>
+                
+              </div>
+              <div className="w-full md:w-[518px] relative flex justify-center md:justify-end">
+                <img
+                  src={flowervase1}
+                  className="absolute bottom-2 -left-5 md:left-5 md:bottom-10 w-[100px] md:w-[135px] h-auto"
+                  alt="flower vase small"
+                />
+                <img
+                  src={flowervase1}
+                  className="w-[200px] md:w-[518px] h-auto"
+                  alt="flower vase large"
+                />
+              </div>
+            </div>
+            {/* Slide 2 */}
+            <div className="glide__slide flex flex-row bg-[#F5F5F5] md:bg-[#E4F2E7]">
+            <div className="my-auto md:my-0 flex-grow font-custom mb-6 md:mb-0 text-start">
+                <p className="w-full text-[10px] md:text-base mt-0 md:mt-20">Welcome to GreenShop</p>
+                <div className="w-full md:w-[530px] h-auto">
+                  <p className="text-xl md:text-[70px] font-black leading-tight">LET’S MAKE A BETTER <span className='text-primary-color'>PLANET</span></p>
+                </div>
+                <div className="w-full md:w-[550px]">
+                  <p className="hidden md:block md:text-sm ">We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!</p>
+                  <p className='block md:hidden text-[10px]'> We are an online plant shop offering a wide range </p>
+                </div>
+                <button className='hidden md:block w-[140px] h-[40px] rounded-lg bg-primary-color text-white mt-[55px] font-custom font-bold text-base'>SHOP NOW</button>
+                <div className='flex md:hidden  flex-row mt-2'>
+                  <span className='text-primary-color'>SHOP NOW</span>
+                  <IoArrowForward size={20} color='#4BA358'/>
+                </div>
+                
+              </div>
+              <div className="w-full md:w-[518px] relative flex justify-center md:justify-end">
+                <img
+                  src={flowervase1}
+                  className="absolute bottom-2 -left-5 md:left-5 md:bottom-10 w-[100px] md:w-[135px] h-auto"
+                  alt="flower vase small"
+                />
+                <img
+                  src={flowervase1}
+                  className="w-[200px] md:w-[518px] h-auto"
+                  alt="flower vase large"
+                />
+              </div>
+            </div>
+            {/* Slide 3 */}
+            <div className="glide__slide flex flex-row">
+            <div className="my-auto md:my-0 flex-grow font-custom mb-6 md:mb-0 text-start">
+                <p className="w-full text-[10px] md:text-base mt-0 md:mt-20">Welcome to GreenShop</p>
+                <div className="w-full md:w-[530px] h-auto">
+                  <p className="text-xl md:text-[70px] font-black leading-tight">LET’S MAKE A BETTER <span className='text-primary-color'>PLANET</span></p>
+                </div>
+                <div className="w-full md:w-[550px]">
+                  <p className="hidden md:block md:text-sm ">We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!</p>
+                  <p className='block md:hidden text-[10px]'> We are an online plant shop offering a wide range </p>
+                </div>
+                <button className='hidden md:block w-[140px] h-[40px] rounded-lg bg-primary-color text-white mt-[55px] font-custom font-bold text-base'>SHOP NOW</button>
+                <div className='flex md:hidden  flex-row mt-2'>
+                  <span className='text-primary-color'>SHOP NOW</span>
+                  <IoArrowForward size={20} color='#4BA358'/>
+                </div>
+                
+              </div>
+              <div className="w-full md:w-[518px] relative flex justify-center md:justify-end">
+                <img
+                  src={flowervase1}
+                  className="absolute bottom-2 -left-5 md:left-5 md:bottom-10 w-[100px] md:w-[135px] h-auto"
+                  alt="flower vase small"
+                />
+                <img
+                  src={flowervase1}
+                  className="w-[200px] md:w-[518px] h-auto"
+                  alt="flower vase large"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        {/*    <!-- Indicators --> */}
-        <div
-          className="absolute bottom-0 flex w-full items-center justify-center gap-2"
-          data-glide-el="controls[nav]"
-        >
-          <button
-            className="group p-4"
-            data-glide-dir="=0"
-            aria-label="goto slide 1"
-          >
-            <span className="block h-2 w-2 rounded-full bg-white/20 ring-1 ring-slate-700 transition-colors duration-300 focus:outline-none"></span>
-          </button>
-          <button
-            className="group p-4"
-            data-glide-dir="=1"
-            aria-label="goto slide 2"
-          >
-            <span className="block h-2 w-2 rounded-full bg-white/20 ring-1 ring-slate-700 transition-colors duration-300 focus:outline-none"></span>
-          </button>
-          <button
-            className="group p-4"
-            data-glide-dir="=2"
-            aria-label="goto slide 3"
-          >
-            <span className="block h-2 w-2 rounded-full bg-white/20 ring-1 ring-slate-700 transition-colors duration-300 focus:outline-none"></span>
-          </button>
-          <button
-            className="group p-4"
-            data-glide-dir="=3"
-            aria-label="goto slide 4"
-          >
-            <span className="block h-2 w-2 rounded-full bg-white/20 ring-1 ring-slate-700 transition-colors duration-300 focus:outline-none"></span>
-          </button>
+
+                {/* Carousel indicators */}
+        <div className="glide__bullets" data-glide-el="controls">
+          <button className="glide__bullet glide__bullet--active" data-glide-dir="=0"></button>
+          <button className="glide__bullet" data-glide-dir="=1"></button>
+          <button className="glide__bullet" data-glide-dir="=2"></button>
         </div>
+
       </div>
-      {/*<!-- End Carousel with indicators inside --> */}
-    </>
-  )
+    </div>
+  );
 }
+
+export default Carousel;

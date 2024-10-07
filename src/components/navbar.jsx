@@ -5,12 +5,12 @@ import { IoIosLogOut } from "react-icons/io";
 
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  // const [menuOpen, setMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState("Home"); 
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  // const toggleMenu = () => {
+  //   setMenuOpen(!menuOpen);
+  // };
 
   const handleMenuClick = (menuItem) => {
     setActiveMenu(menuItem);
