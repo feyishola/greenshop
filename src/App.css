@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "cera-pro";
+  src: url("./assets/fonts/Fontspring-DEMO-cerapro-regular.otf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
