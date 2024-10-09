@@ -59,7 +59,7 @@ const Footer = () => {
           <p className='w-[112px] h-[22px] text-[#727272] text-[13px] font-normal'>+88 01911 717 490</p>
         </div>
       </div>
-      <div className="h-full w-full p-[25px] grid gap-6 md:grid-cols-2 lg:grid-cols-4 md:h-[236px] text-center md:text-left">
+      <div className="h-full w-full p-[25px] grid gap-6 grid-cols-2 lg:grid-cols-4 md:h-[236px] text-center md:text-left">
         {/* My Account Section */}
         <div>
           <h3 className="text-lg font-bold mb-4">My Account</h3>
@@ -99,7 +99,7 @@ const Footer = () => {
         {/* Social Media Section */}
         <div>
           <h3 className="text-lg font-bold mb-4">Social Media</h3>
-          <div className="flex justify-center md:justify-start space-x-4 mb-4">
+          <div className="flex justify-center md:justify-start space-x-4 mb-4 flex-wrap">
             <img src={Facebook} alt="Facebook" className="w-8 h-8"/>
             <img src={Instagram} alt="Instagram" className="w-8 h-8"/>
             <img src={twitter} alt="Twitter" className="w-8 h-8"/>

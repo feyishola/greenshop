@@ -29,7 +29,7 @@ const ProductNavbar = () => {
         </ul>
       </div>
 
-      <div className='mt-2 md:mt-0'>
+      <div className='hidden md:flex mt-2 md:mt-0'>
         <label className='text-gray-600'>
           Sort by: 
           <select className='ml-2 p-1 border border-gray-300 rounded-md'>
