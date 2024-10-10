@@ -12,6 +12,7 @@ import product9 from "../assets/image 10.svg";
 import Productcard from './productcard';
 import ProductNavbar from './productnavbar';
 import Pagination from './pagination';
+import nodata from "../assets/nodata.jpg";
 
 
 
@@ -35,6 +36,12 @@ const Categories = () => {
       "House Plants", "Potter Plants", "Seeds", "Small Plants", 
       "Big Plants", "Succulents", "Trerrariums", "Gardening", "Accessories"
     ];
+
+    const [activeTab, setActiveTab] = useState('All Plants');
+
+    const handleTabClick = (tab) => {
+      setActiveTab(tab);
+    };
   
     return (
       <div className='flex flex-col'>
@@ -87,10 +94,11 @@ const Categories = () => {
     
           {/* Left Side - Product Section */}
           <div className='flex-1'>
-            <ProductNavbar />
-    
-            {/* Product Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 px-5 md:px-0">
+            <ProductNavbar activeTab={activeTab} handleTabClick={handleTabClick} />
+            
+            {activeTab === 'All Plants' ? 
+            (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-8 px-5 md:px-0">
               {products.map((product, index) => (
                 <Productcard
                   key={index}
@@ -102,6 +110,15 @@ const Categories = () => {
                 />
               ))}
             </div>
+            ): 
+            (
+               
+            <div className="flex justify-center items-start h-full">
+                <img src={nodata}  alt="No Items yet" className='w-[300px] h-[300px] md:w-[500px] md:h-[500px]'/>
+            </div> 
+            )}
+            
+           
           </div>
         </div>
         <div className='w-full h-auto md:h-[219px] flex justify-end align-middle'>

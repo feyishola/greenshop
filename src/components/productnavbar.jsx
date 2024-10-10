@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const ProductNavbar = () => {
-  const [activeTab, setActiveTab] = useState('All Plants');
+const ProductNavbar = ({ activeTab, handleTabClick }) => {
+  // const [activeTab, setActiveTab] = useState('All Plants');
 
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
+  // const handleTabClick = (tab) => {
+  //   setActiveTab(tab);
+  // };
 
   const navItems = ['All Plants', 'New Arrivals', 'Sales'];
 
