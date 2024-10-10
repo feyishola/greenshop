@@ -4,6 +4,8 @@ import Layout from "../layout/layout";
 import Shop from "../pages/shop";
 import Plantcare from "../pages/plantcare";
 import Blog from "../pages/blog";
+import ShoppingCart from "../pages/shoppingcart";
+import Checkout from "../pages/checkout";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
       {
         path: "plantcare",
         element: <Plantcare />,
+      },
+      {
+        path: "shoppingcart",
+        element: <ShoppingCart />,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
       },
       {
         path: "blog",

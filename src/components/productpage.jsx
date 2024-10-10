@@ -3,7 +3,7 @@ import img1 from '../assets/image 1.svg'
 import img2 from '../assets/product-20-320x320 1.svg';
 import img3 from '../assets/image 10.svg'
 import img4 from '../assets/image 9.svg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaHeart,FaFacebookF,FaTwitter,FaLinkedinIn } from "react-icons/fa"; 
 import { CiMail } from "react-icons/ci";
 
@@ -15,7 +15,7 @@ const ProductPage = () => {
     const [active, setActive] = useState("S");
     const [count, setCounter] = useState(0);
     const [activeScreen, setActiveScreen] = useState("productdescription");
-    // const [view, setView] = useState
+    const navigate = useNavigate();
     
 
     const handleImageClick = (image) => {
@@ -156,8 +156,8 @@ const ProductPage = () => {
                                 +
                             </button>
                         </div>
-                        <button className='px-1 bg-primary-color text-white rounded-lg'>BUY NOW</button>
-                        <button className='px-1 border border-primary-color text-primary-color rounded-lg'>ADD TO CART</button>
+                        <button className='px-2 md:px-8 bg-primary-color text-white rounded-lg' onClick={()=>{navigate("/shoppingcart")}}>BUY NOW</button>
+                        <button className='px-2 md:px-8 border border-primary-color text-primary-color rounded-lg'>ADD TO CART</button>
                         <div className='border border-primary-color rounded-lg flex justify-center items-center w-10'><FaHeart className="text-primary-color hover:text-gray-400 " size={20} /></div>
                     </div>
                     {/* details */}
@@ -182,9 +182,9 @@ const ProductPage = () => {
             <div class="lg:col-span-3">
                 <div class="border-b border-gray-300">
                     <nav class="flex gap-4">
-                        <p class={` py-4 text-sm font-medium  ${activeScreen ==="productdescription" ? 'border-b-2 border-primary-color text-primary-color' : 'text-gray-900'}`} onClick={()=>handleScreenChange("productdescription")}>Product Description </p>
+                        <p class={`cursor-pointer py-4 text-sm font-medium  ${activeScreen ==="productdescription" ? 'border-b-2 border-primary-color text-primary-color' : 'text-gray-900'}`} onClick={()=>handleScreenChange("productdescription")}>Product Description </p>
 
-                        <p class={`inline-flex items-center text-sm font-medium  ${activeScreen ==="reviews" ? 'border-b-2 border-primary-color text-primary-color' : 'text-gray-900'}`} onClick={()=>handleScreenChange("reviews")}>
+                        <p class={`cursor-pointer  inline-flex items-center text-sm font-medium  ${activeScreen ==="reviews" ? 'border-b-2 border-primary-color text-primary-color' : 'text-gray-900'}`} onClick={()=>handleScreenChange("reviews")}>
                         Reviews (19)
                         </p>
                     </nav>

@@ -4,8 +4,12 @@ import { IoArrowForward } from "react-icons/io5";
 import Glide from '@glidejs/glide';
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import '@glidejs/glide/dist/css/glide.theme.min.css';
+import { useNavigate } from 'react-router-dom';
 
 const Carousel = () => {
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     const glide = new Glide('.glide', {
       type: 'carousel',
@@ -50,8 +54,8 @@ const Carousel = () => {
                   <p className="hidden md:block md:text-sm ">We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!</p>
                   <p className='block md:hidden text-[10px]'> We are an online plant shop offering a wide range </p>
                 </div>
-                <button className='hidden md:block w-[140px] h-[40px] rounded-lg bg-primary-color text-white mt-[55px] font-custom font-bold text-base'>SHOP NOW</button>
-                <div className='flex md:hidden  flex-row mt-2'>
+                <button className='hidden md:block w-[140px] h-[40px] rounded-lg bg-primary-color text-white mt-[55px] font-custom font-bold text-base' onClick={()=>{navigate("/shop")}}>SHOP NOW</button>
+                <div className='flex md:hidden  flex-row mt-2'onClick={()=>{navigate("/shop")}}>
                   <span className='text-primary-color'>SHOP NOW</span>
                   <IoArrowForward size={20} color='#4BA358'/>
                 </div>
@@ -81,8 +85,8 @@ const Carousel = () => {
                   <p className="hidden md:block md:text-sm ">We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!</p>
                   <p className='block md:hidden text-[10px]'> We are an online plant shop offering a wide range </p>
                 </div>
-                <button className='hidden md:block w-[140px] h-[40px] rounded-lg bg-primary-color text-white mt-[55px] font-custom font-bold text-base'>SHOP NOW</button>
-                <div className='flex md:hidden  flex-row mt-2'>
+                <button className='hidden md:block w-[140px] h-[40px] rounded-lg bg-primary-color text-white mt-[55px] font-custom font-bold text-base' onClick={()=>{navigate("/shop")}}>SHOP NOW</button>
+                <div className='flex md:hidden  flex-row mt-2' onClick={()=>{navigate("/shop")}}>
                   <span className='text-primary-color'>SHOP NOW</span>
                   <IoArrowForward size={20} color='#4BA358'/>
                 </div>
@@ -112,8 +116,8 @@ const Carousel = () => {
                   <p className="hidden md:block md:text-sm ">We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!</p>
                   <p className='block md:hidden text-[10px]'> We are an online plant shop offering a wide range </p>
                 </div>
-                <button className='hidden md:block w-[140px] h-[40px] rounded-lg bg-primary-color text-white mt-[55px] font-custom font-bold text-base'>SHOP NOW</button>
-                <div className='flex md:hidden  flex-row mt-2'>
+                <button className='hidden md:block w-[140px] h-[40px] rounded-lg bg-primary-color text-white mt-[55px] font-custom font-bold text-base' onClick={()=>{navigate("/shop")}}>SHOP NOW</button>
+                <div className='flex md:hidden  flex-row mt-2' onClick={()=>{navigate("/shop")}}>
                   <span className='text-primary-color'>SHOP NOW</span>
                   <IoArrowForward size={20} color='#4BA358'/>
                 </div>
