@@ -63,7 +63,7 @@ const ShoppingCartTable = () => {
   return (
     <div className='pt-1 md:pt-9'>
         {/* nav starts*/}
-        <nav class="flex mb-3 md:mb-[57px]">
+        <nav class="flex mb-3 md:mb-[57px] pl-3 md:pl-0">
             <ol class="flex items-center">
                 <li class="text-left">
                     <div class="-m-1">
