@@ -99,7 +99,7 @@ const Footer = () => {
         {/* Social Media Section */}
         <div>
           <h3 className="text-lg font-bold mb-4">Social Media</h3>
-          <div className="flex justify-center md:justify-start space-x-4 mb-4 flex-wrap">
+          <div className="flex justify-center md:justify-start space-x-2 mb-4 flex-wrap">
             <img src={Facebook} alt="Facebook" className="w-8 h-8"/>
             <img src={Instagram} alt="Instagram" className="w-8 h-8"/>
             <img src={twitter} alt="Twitter" className="w-8 h-8"/>

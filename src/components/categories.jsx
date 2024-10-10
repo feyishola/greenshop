@@ -14,6 +14,9 @@ import ProductNavbar from './productnavbar';
 import Pagination from './pagination';
 
 
+
+
+
 const products = [
     {img:product1,productname:"Barberton Daisy",price:"$119.00"},
     {img:product2,productname:"Angel Wing Begonia",price:"$169.00"},
@@ -35,15 +38,15 @@ const Categories = () => {
   
     return (
       <div className='flex flex-col'>
-        <div className='w-full flex flex-col md:flex-row gap-6 mt-7'>
+        <div className='w-full flex flex-col md:flex-row gap-10 mt-7'>
     
           {/* Right Side Section - Hidden on Small Screens */}
           <div className='w-full md:w-[310px] flex-col bg-secondary-color hidden md:flex'>
             <div className="w-full flex flex-col p-3 space-y-6">
     
               {/* Categories Section */}
-              <div className="w-full flex flex-col space-y-3">
-                <p className="text-[18px] font-bold">Categories</p>
+              <div className="w-full flex flex-col space-y-5">
+                <p className="text-[18px] font-bold text-start">Categories</p>
                 {categories.map((category, index) => (
                   <div 
                     key={index} 
@@ -58,7 +61,7 @@ const Categories = () => {
     
               {/* Price Range Section */}
               <div className="w-full flex flex-col space-y-2">
-                <p className="text-[18px] font-bold">Price Range</p>
+                <p className="text-[18px] font-bold text-start">Price Range</p>
                 <p>Price: <span className="text-primary-color text-[13px]">$39 - $1230</span></p>
                 <input type="range" min={0} max={100} className="w-full h-2 rounded-full bg-green-200 accent-green-500" />
                 <button className="text-white bg-primary-color py-2 rounded w-[90px]">Filter</button>
@@ -66,7 +69,7 @@ const Categories = () => {
     
               {/* Size Section */}
               <div className="w-full flex flex-col space-y-3">
-                <p className="text-[18px] font-bold">Size</p>
+                <p className="text-[18px] font-bold text-start">Size</p>
                 {["Small", "Medium", "Large"].map((size, index) => (
                   <div key={index} className="flex justify-between text-sm md:text-base">
                     <p>{size}</p>
@@ -87,7 +90,7 @@ const Categories = () => {
             <ProductNavbar />
     
             {/* Product Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 p-5">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 px-5 md:px-0">
               {products.map((product, index) => (
                 <Productcard
                   key={index}

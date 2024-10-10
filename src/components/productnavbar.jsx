@@ -32,7 +32,7 @@ const ProductNavbar = () => {
       <div className='hidden md:flex mt-2 md:mt-0'>
         <label className='text-gray-600'>
           Sort by: 
-          <select className='ml-2 p-1 border border-gray-300 rounded-md'>
+          <select className='ml-2 p-1 rounded-md bg-transparent'>
             <option>Default Sorting</option>
             <option>Price: Low to High</option>
             <option>Price: High to Low</option>

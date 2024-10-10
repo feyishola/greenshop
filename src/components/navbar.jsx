@@ -38,7 +38,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex flex-grow justify-center space-x-8 relative">
-          <ul className="flex space-x-6">
+          <ul className="flex gap-[90px]">
             {["Home", "Shop", "Plant Care", "Blog"].map((menuItem) => (
               <li
                 key={menuItem}
