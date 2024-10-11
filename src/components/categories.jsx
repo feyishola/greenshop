@@ -32,12 +32,19 @@ const products = [
 
 const Categories = () => {
     const [activeCategory, setActiveCategory] = useState("House Plants");
+    const [activeTab, setActiveTab] = useState('All Plants');
+    const [price, setPrice] = useState(1);
+
+
     const categories = [
       "House Plants", "Potter Plants", "Seeds", "Small Plants", 
       "Big Plants", "Succulents", "Trerrariums", "Gardening", "Accessories"
     ];
 
-    const [activeTab, setActiveTab] = useState('All Plants');
+    
+    const handlePriceChange = (e)=>{
+      setPrice(e.target.value);
+    }
 
     const handleTabClick = (tab) => {
       setActiveTab(tab);
@@ -67,11 +74,11 @@ const Categories = () => {
               </div>
     
               {/* Price Range Section */}
-              <div className="w-full flex flex-col space-y-2">
+              <div className="w-full flex flex-col space-y-4">
                 <p className="text-[18px] font-bold text-start">Price Range</p>
-                <p>Price: <span className="text-primary-color text-[13px]">$39 - $1230</span></p>
-                <input type="range" min={0} max={100} className="w-full h-2 rounded-full bg-green-200 accent-green-500" />
-                <button className="text-white bg-primary-color py-2 rounded w-[90px]">Filter</button>
+                <p className='text-[15px]'>Price: <span className="text-primary-color text-[15px] font-bold">${price} - $1230</span></p>
+                <input type="range" min={1} max={1230} value={price} onChange={handlePriceChange} className="w-full h-2 rounded-full bg-green-200 accent-green-500" />
+                <button className="text-white bg-primary-color py-2 rounded w-[90px] ">Filter</button>
               </div>
     
               {/* Size Section */}

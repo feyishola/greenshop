@@ -15,6 +15,7 @@ const ProductPage = () => {
     const [active, setActive] = useState("S");
     const [count, setCounter] = useState(0);
     const [activeScreen, setActiveScreen] = useState("productdescription");
+    const [love, setLove] = useState(false);
     const navigate = useNavigate();
     
 
@@ -138,7 +139,7 @@ const ProductPage = () => {
                             ))
                         }
                     </div>
-                    <div className='mt-3 flex flex-row gap-2'>
+                    <div className='mt-3 flex flex-col md:flex-row  gap-2'>
                         {/* Counter */}
                         <div className="flex items-center space-x-6">
                             <button 
@@ -156,9 +157,11 @@ const ProductPage = () => {
                                 +
                             </button>
                         </div>
-                        <button className='px-2 md:px-8 bg-primary-color text-white rounded-lg' onClick={()=>{navigate("/shoppingcart")}}>BUY NOW</button>
-                        <button className='px-2 md:px-8 border border-primary-color text-primary-color rounded-lg'>ADD TO CART</button>
-                        <div className='border border-primary-color rounded-lg flex justify-center items-center w-10'><FaHeart className="text-primary-color hover:text-gray-400 " size={20} /></div>
+                        <div className='flex flex-row gap-2'>
+                            <button className='px-2 md:px-8 bg-primary-color text-white rounded-lg' onClick={()=>{navigate("/shoppingcart")}}>BUY NOW</button>
+                            <button className='px-2 md:px-8 border border-primary-color text-primary-color rounded-lg' onClick={()=>{navigate("/shoppingcart")}}>ADD TO CART</button>
+                            <div className='border border-primary-color rounded-lg flex justify-center items-center w-10' onClick={()=>setLove(!love)}><FaHeart className={`${love ? 'text-red-500' : 'text-primary-color'} `} size={20} /></div>
+                        </div>
                     </div>
                     {/* details */}
                     <div className='mt-5 space-y-1'>
