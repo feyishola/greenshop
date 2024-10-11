@@ -4,6 +4,9 @@ import img1 from '../assets/image 1.svg'
 import img2 from '../assets/product-20-320x320 1.svg';
 import img3 from '../assets/image 10.svg'
 import paymenttype from "../assets/paymenttype.svg";
+import card1 from "../assets/Group 91.svg"
+import card2 from "../assets/Group 92.svg"
+import card3 from "../assets/Group 93.svg"
 
 
 const Checkout = () => {
@@ -314,22 +317,37 @@ const Checkout = () => {
                     {/* payment method */}
                     <div className='mb-[49px]'>
                         <p className='text-start text-[17px] mt-[11px] mb-2 font-bold'>Payment Method</p>
-                        <div className="mt-4 flex flex-row gap-5 px-5 md:px-0 border border-black p-5 cursor-pointer">
+                        <div className="mt-4 justify-between md:justify-normal flex flex-row-reverse md:flex-row gap-5 px-5 md:px-0 border md:border-black p-5 cursor-pointer shadow-xl md:shadow-none mx-3 md:mx-0 rounded-xl md:rounded-none">
                             <input type="radio" name="paymentOption" value={"creditcard"} className='ml-5' />
-                            <img src={paymenttype} alt='payment'/>
+                            <img src={paymenttype} alt='payment' className='hidden md:block'/>
+
+                            <div className='flex md:hidden flex-row gap-3 '>
+                                <img src={card1} width={"40px"} height={'40px'} alt='Credit Card'/>
+                                <p className='my-auto'>Credit Card</p>
+                            </div>
                         </div>
-                        <div className="mt-4 flex flex-row gap-5 px-5 md:px-0 border border-black p-5 cursor-pointer">
+                        <div className="mt-4 justify-between md:justify-normal flex flex-row-reverse md:flex-row gap-5 px-5 md:px-0 border md:border-black p-5 cursor-pointer shadow-xl md:shadow-none mx-3 md:mx-0 rounded-xl md:rounded-none">
                             <input type="radio" name="paymentOption" value={"banktransfer"} className='ml-5' />
-                            <label className="block text-gray-700 font-medium text-[15px]">
+                            <label className="text-gray-700 font-medium text-[15px] hidden md:block">
                                 Direct bank transfer
                             </label>
+
+                            <div className='flex md:hidden flex-row gap-3 '>
+                                <img src={card2} width={"40px"} height={'40px'} alt='Credit Card'/>
+                                <p className='my-auto'>Paypal</p>
+                            </div>
                             
                         </div>
-                        <div className="mt-4 flex flex-row gap-5 px-5 md:px-0 border border-black p-5 cursor-pointer">
+                        <div className="mt-4 justify-between md:justify-normal flex flex-row-reverse md:flex-row gap-5 px-5 md:px-0 border md:border-black p-5 cursor-pointer shadow-xl md:shadow-none mx-3 md:mx-0 rounded-xl md:rounded-none">
                             <input type="radio" name="paymentOption" value={"cash"} className='ml-5' />
-                            <label className="block text-gray-700 font-medium text-[15px]">
+                            <label className=" text-gray-700 font-medium text-[15px] hidden md:block">
                                 Cash on delivery
                             </label>
+
+                            <div className='flex md:hidden flex-row gap-3 '>
+                                <img src={card3} width={"40px"} height={'40px'} alt='Credit Card'/>
+                                <p className='my-auto'>Cash on delivery</p>
+                            </div>
                             
                         </div>
                     </div>
