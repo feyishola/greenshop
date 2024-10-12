@@ -7,9 +7,21 @@ import paymenttype from "../assets/paymenttype.svg";
 import card1 from "../assets/Group 91.svg"
 import card2 from "../assets/Group 92.svg"
 import card3 from "../assets/Group 93.svg"
+import OrderModal from '../components/ordermodal';
 
 
 const Checkout = () => {
+
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const handleOpenModal = () => {
+      setModalOpen(true);
+    };
+  
+    const handleCloseModal = () => {
+      setModalOpen(false);
+    };
+
 
     const [data] = useState([
         {
@@ -228,7 +240,7 @@ const Checkout = () => {
 
                     {/* Ship to a different address */}
                     <div className="mt-4 flex flex-row gap-2 px-5 md:px-0">
-                        <input type="radio" name="shipToDifferent" />
+                        <input type="radio" name="shipToDifferent" className='accent-primary-color'/>
                         <label className="block text-gray-700 font-medium text-[15px]">
                             Ship to a different address?
                         </label>
@@ -318,7 +330,7 @@ const Checkout = () => {
                     <div className='mb-[49px]'>
                         <p className='text-start text-[17px] mt-[11px] mb-2 font-bold'>Payment Method</p>
                         <div className="mt-4 justify-between md:justify-normal flex flex-row-reverse md:flex-row gap-5 px-5 md:px-0 border md:border-black p-5 cursor-pointer shadow-xl md:shadow-none mx-3 md:mx-0 rounded-xl md:rounded-none">
-                            <input type="radio" name="paymentOption" value={"creditcard"} className='ml-5' />
+                            <input type="radio" name="paymentOption" value={"creditcard"} className='ml-5 accent-primary-color ' />
                             <img src={paymenttype} alt='payment' className='hidden md:block'/>
 
                             <div className='flex md:hidden flex-row gap-3 '>
@@ -327,7 +339,7 @@ const Checkout = () => {
                             </div>
                         </div>
                         <div className="mt-4 justify-between md:justify-normal flex flex-row-reverse md:flex-row gap-5 px-5 md:px-0 border md:border-black p-5 cursor-pointer shadow-xl md:shadow-none mx-3 md:mx-0 rounded-xl md:rounded-none">
-                            <input type="radio" name="paymentOption" value={"banktransfer"} className='ml-5' />
+                            <input type="radio" name="paymentOption" value={"banktransfer"} className='ml-5 accent-primary-color' />
                             <label className="text-gray-700 font-medium text-[15px] hidden md:block">
                                 Direct bank transfer
                             </label>
@@ -339,8 +351,8 @@ const Checkout = () => {
                             
                         </div>
                         <div className="mt-4 justify-between md:justify-normal flex flex-row-reverse md:flex-row gap-5 px-5 md:px-0 border md:border-black p-5 cursor-pointer shadow-xl md:shadow-none mx-3 md:mx-0 rounded-xl md:rounded-none">
-                            <input type="radio" name="paymentOption" value={"cash"} className='ml-5' />
-                            <label className=" text-gray-700 font-medium text-[15px] hidden md:block">
+                            <input type="radio" name="paymentOption" value={"cash"} className='ml-5 accent-primary-color' />
+                            <label className=" text-gray-700 font-medium text-[15px] hidden md:block" >
                                 Cash on delivery
                             </label>
 
@@ -352,9 +364,9 @@ const Checkout = () => {
                         </div>
                     </div>
 
-                    <button className='bg-primary-color text-white w-full p-3 rounded-md'>Place Order</button>
+                    <button className='bg-primary-color text-white w-full p-3 rounded-md' onClick={handleOpenModal}>Place Order</button>
                 </div>
-                
+                <OrderModal isOpen={isModalOpen} onClose={handleCloseModal}/>
             </div>
             
         </div>

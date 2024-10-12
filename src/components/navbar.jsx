@@ -4,6 +4,7 @@ import { CiSearch, CiShoppingCart } from "react-icons/ci";
 import { IoIosLogOut } from "react-icons/io";
 import { PiSlidersHorizontal } from "react-icons/pi";
 import { useNavigate } from 'react-router-dom';
+import AuthModal from '../auth/auth';
 
 
 
@@ -15,6 +16,16 @@ const Navbar = () => {
   // const toggleMenu = () => {
   //   setMenuOpen(!menuOpen);
   // };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalOpen = ()=>{
+    setIsModalOpen(true)
+  }
+
+  const handleModalClose = ()=>{
+    setIsModalOpen(false)
+  }
 
   const handleMenuClick = (menuItem) => {
     setActiveMenu(menuItem);
@@ -61,7 +72,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-4">
           <CiSearch aria-label="Search" size={24} className="cursor-pointer" />
           <CiShoppingCart aria-label="Shopping Cart" size={24} className="cursor-pointer" />
-          <button className="flex items-center space-x-1 bg-green-600 text-white px-4 py-1 rounded-md hover:bg-green-700">
+          <button className="flex items-center space-x-1 bg-green-600 text-white px-4 py-1 rounded-md hover:bg-green-700" onClick={handleModalOpen}>
             <IoIosLogOut size={20} />
             <span>Login</span>
           </button>
@@ -84,12 +95,13 @@ const Navbar = () => {
           placeholder="Find your plants"
           className="flex-grow border border-gray-300 p-2 rounded-md focus:outline-none"
         />
-        {/* Search Button */}
-        <button className="ml-2 bg-green-600 text-white p-2 rounded-md hover:bg-green-700">
+        {/* SlidersHorizontal Button */}
+        <button className="ml-2 bg-green-600 text-white p-2 rounded-md hover:bg-green-700 shadow-2xl">
           {/* <CiSearch size={20} /> */}
           <PiSlidersHorizontal size={20} />
         </button>
       </div>
+      <AuthModal isOpen={isModalOpen} onClose={handleModalClose}/>
     </nav>
   );
 };
