@@ -1,0 +1,11 @@
+services:
+  greenshop-web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    volumes: # Optional: Mount current directory into the container (useful during development)
+      - .:/app
+    command: "npm start"
+    restart: unless-stopped
