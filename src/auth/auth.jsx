@@ -4,13 +4,24 @@ import { ReactComponent as Facebook } from "../assets/facebook 1.svg";
 import { ReactComponent as Google } from "../assets/google 1.svg";
 import { BiHide } from "react-icons/bi";
 import { GrView } from "react-icons/gr";
+import { useNavigate } from 'react-router-dom';
 
 const AuthModal = ({ isOpen, onClose }) => {
   const [viewPassword, setViewPassword] = useState(false);
   const [isRegister, setIsRegister] = useState(false); 
+  const navigate = useNavigate();
 
   const handlePasswordView = () => {
     setViewPassword(!viewPassword);
+  };
+
+  const handleButtonClick = () => {
+    if (!isRegister) {
+      navigate('/account');
+    } else {
+      
+      console.log('Register action');
+    }
   };
 
   if (!isOpen) return null;
@@ -102,7 +113,7 @@ const AuthModal = ({ isOpen, onClose }) => {
             )}
 
             {/* Submit Button */}
-            <button className="w-full px-4 py-2 text-white font-medium bg-primary-color rounded-lg duration-150">
+            <button className="w-full px-4 py-2 text-white font-medium bg-primary-color rounded-lg duration-150" onClick={handleButtonClick}>
               {isRegister ? "Register" : "Login"}
             </button>
           </form>

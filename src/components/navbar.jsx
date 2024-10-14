@@ -96,7 +96,7 @@ const Navbar = () => {
           className="flex-grow border border-gray-300 p-2 rounded-md focus:outline-none"
         />
         {/* SlidersHorizontal Button */}
-        <button className="ml-2 bg-green-600 text-white p-2 rounded-md hover:bg-green-700 shadow-2xl">
+        <button className="ml-2 bg-green-600 text-white p-2 rounded-md hover:bg-green-700 shadow-2xl" onClick={handleModalOpen}>
           {/* <CiSearch size={20} /> */}
           <PiSlidersHorizontal size={20} />
         </button>

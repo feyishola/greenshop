@@ -6,6 +6,8 @@ import Plantcare from "../pages/plantcare";
 import Blog from "../pages/blog";
 import ShoppingCart from "../pages/shoppingcart";
 import Checkout from "../pages/checkout";
+import LayoutWithoutFooter from "../layout/layoutwithoutfooter";
+import AccountDetails from "../pages/accountdetails";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,20 @@ const router = createBrowserRouter([
       {
         path: "blog",
         element: <Blog />,
+      },
+    ],
+  },
+  {
+    path: "/account",
+    element: (
+      <LayoutWithoutFooter>
+        <Outlet />
+      </LayoutWithoutFooter>
+    ),
+    children: [
+      {
+        index: true,
+        element: <AccountDetails />,
       },
     ],
   },
