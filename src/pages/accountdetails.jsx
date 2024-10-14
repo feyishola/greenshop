@@ -30,8 +30,8 @@ const AccountDetails = () => {
       };
 
   return (
-    <div className='flex flex-col'>
-        <div className='w-full flex flex-col md:flex-row gap-10 mt-7'>
+    <div className='flex flex-col mt-16'>
+        <div className='w-full flex flex-col md:flex-row gap-10'>
     
           {/* Right Side Section - Hidden on Small Screens */}
           <div className='p-5 md:p-0'>
