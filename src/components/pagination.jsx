@@ -11,7 +11,7 @@ const Pagination = ()=>{
         <ul className="flex list-none items-center justify-center text-sm text-slate-700 md:gap-1">
           <li>
             <a
-              href="javascript:void(0)"
+              href="/"
               aria-label="Goto Page 1"
               className="inline-flex h-10 items-center justify-center gap-4 stroke-slate-700 px-4 text-sm font-medium text-slate-700 transition duration-300 hover:bg-emerald-50 hover:stroke-emerald-500 hover:text-emerald-500 focus:bg-emerald-50 focus:stroke-emerald-600 focus:text-emerald-600 focus-visible:outline-none"
             >
@@ -39,7 +39,7 @@ const Pagination = ()=>{
 
           <li>
             <a
-              href="javascript:void(0)"
+              href="/"
               aria-label="Goto Page 1"
               className="hidden h-10 items-center justify-center stroke-slate-700 px-4 text-sm font-medium text-slate-700 transition duration-300 hover:bg-emerald-50 hover:stroke-emerald-500 hover:text-emerald-500 focus:bg-emerald-50 focus:stroke-emerald-600 focus:text-emerald-600 focus-visible:outline-none md:inline-flex"
             >
@@ -48,7 +48,7 @@ const Pagination = ()=>{
           </li>
           <li>
             <a
-              href="javascript:void(0)"
+              href="/"
               aria-label="Goto Page 2"
               className="hidden h-10 items-center justify-center stroke-slate-700 px-4 text-sm font-medium text-slate-700 transition duration-300 hover:bg-emerald-50 hover:stroke-emerald-500 hover:text-emerald-500 focus:bg-emerald-50 focus:stroke-emerald-600 focus:text-emerald-600 focus-visible:outline-none md:inline-flex"
             >
@@ -57,7 +57,7 @@ const Pagination = ()=>{
           </li>
           <li>
             <a
-              href="javascript:void(0)"
+              href="/"
               className="hidden h-10 items-center justify-center whitespace-nowrap bg-emerald-500 px-4 text-sm font-medium text-white ring-offset-2 transition duration-300 hover:bg-emerald-600 hover:stroke-emerald-500 focus:bg-emerald-700 focus-visible:outline-none md:inline-flex"
               aria-label="Current Page, Page 3"
               aria-current="true"
@@ -67,7 +67,7 @@ const Pagination = ()=>{
           </li>
           <li>
             <a
-              href="javascript:void(0)"
+              href="/"
               aria-label="Goto Page 4"
               className="hidden h-10 items-center justify-center stroke-slate-700 px-4 text-sm font-medium text-slate-700 transition duration-300 hover:bg-emerald-50 hover:stroke-emerald-500 hover:text-emerald-500 focus:bg-emerald-50 focus:stroke-emerald-600 focus:text-emerald-600 focus-visible:outline-none md:inline-flex"
             >
@@ -76,7 +76,7 @@ const Pagination = ()=>{
           </li>
           <li>
             <a
-              href="javascript:void(0)"
+              href="/"
               aria-label="Goto Page 4"
               className="inline-flex h-10 items-center justify-center gap-4 stroke-slate-700 px-4 text-sm font-medium text-slate-700 transition duration-300 hover:bg-emerald-50 hover:stroke-emerald-500 hover:text-emerald-500 focus:bg-emerald-50 focus:stroke-emerald-600 focus:text-emerald-600 focus-visible:outline-none"
             >

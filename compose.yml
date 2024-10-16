@@ -9,3 +9,27 @@ services:
       - .:/app
     command: "npm start"
     restart: unless-stopped
+# services:
+#   greenshop-web:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile.dev # Use Dockerfile.dev for development
+#     ports:
+#       - "3000:3000"
+#     environment:
+#       - NODE_ENV=development
+#     volumes:
+#       - .:/app  # Mount current directory for live reload during development
+#     command: "npm start"  # Development command to start the app
+#     restart: unless-stopped
+
+#   greenshop-web-prod:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile # Use Dockerfile for production
+#     ports:
+#       - "3000:3000"
+#     environment:
+#       - NODE_ENV=production
+#     restart: unless-stopped
+

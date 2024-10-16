@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineDelete } from "react-icons/ai";
 import nodata from "../assets/nodata.jpg";
@@ -10,6 +10,10 @@ import InputFormWithButton from './input';
 const ShoppingCartTable = () => {
 
     const navigate = useNavigate();
+
+      // State to store total sum
+  const [sumTotal, setSumTotal] = useState(0);
+
 
     const [data, setData] = useState([
         {
@@ -59,6 +63,21 @@ const ShoppingCartTable = () => {
       const deleteItem = (index) => {
         setData(data.filter((_, i) => i !== index));
       };
+
+
+  
+  const calculateSum = (data) => {
+    const total = data.reduce((acc, item) => {
+      // Remove the "$" sign and convert to a number
+      const numericTotal = parseFloat(item.total.replace('$', ''));
+      return acc + numericTotal;
+    }, 0);
+    setSumTotal(total);
+  };
+
+  useEffect(() => {
+    calculateSum(data);
+  }, [data]);
 
   return (
     <div className='pt-1 md:pt-9'>
@@ -159,6 +178,7 @@ const ShoppingCartTable = () => {
                             {/* Total and Delete Button */}
                             <div className="hidden md:flex flex-row gap-20 items-center  ">
                                 <span className='text-primary-color'>{info.total}</span>
+                                
                                 <button onClick={() => deleteItem(index)} aria-label="Delete item">
                                     <AiOutlineDelete size={20} />
                                 </button>
@@ -181,7 +201,7 @@ const ShoppingCartTable = () => {
                 <div className="w-full flex flex-col space-y-3 mb-[29px]">
                     <div className="flex justify-between text-sm md:text-base cursor-pointer">
                         <p>Subtotal</p>
-                        <p>$2,683.00</p>
+                        <p>${sumTotal}</p>
                     </div>
                     <div className="flex justify-between text-sm md:text-base cursor-pointer">
                         <p>Coupon Discount</p>
@@ -194,10 +214,10 @@ const ShoppingCartTable = () => {
                     <p className='text-right text-primary-color text-[12px]'>View shipping charge</p>
                     <div className="flex justify-between text-sm md:text-base cursor-pointer ">
                         <p className='text-base font-bold'>Total</p>
-                        <p className='text-[18px] font-bold text-primary-color'>$2,699.00</p>
+                        <p className='text-[18px] font-bold text-primary-color'>${sumTotal + 16}</p>
                     </div>
                 </div>
-                <button className='bg-primary-color text-white w-full p-3 rounded-md' onClick={()=>{navigate("/checkout")}}>Proceed To Checkout</button>
+                <button className='bg-primary-color text-white w-full p-3 rounded-md' onClick={()=>{navigate("/checkout",{state:{data,sumTotal}})}}>Proceed To Checkout</button>
                 <p className='mt-[15px] text-[15px] text-primary-color'>Continue Shopping</p>
             </div>
         </div>

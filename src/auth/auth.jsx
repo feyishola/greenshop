@@ -5,6 +5,8 @@ import { ReactComponent as Google } from "../assets/google 1.svg";
 import { BiHide } from "react-icons/bi";
 import { GrView } from "react-icons/gr";
 import { useNavigate } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 const AuthModal = ({ isOpen, onClose }) => {
   const [viewPassword, setViewPassword] = useState(false);
@@ -15,12 +17,29 @@ const AuthModal = ({ isOpen, onClose }) => {
     setViewPassword(!viewPassword);
   };
 
-  const handleButtonClick = () => {
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").when("isRegister", {
+      is: true,
+      then: Yup.string().required("Email is required"),
+    }),
+    username: Yup.string().required("Username is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+    confirmPassword: Yup.string().when("isRegister", {
+      is: true,
+      then: Yup.string()
+        .oneOf([Yup.ref("password"), null], "Passwords must match")
+        .required("Confirm password is required"),
+    }),
+  });
+
+  const handleSubmit = (values) => {
     if (!isRegister) {
-      navigate('/account');
+      navigate('/account'); 
     } else {
       
-      console.log('Register action');
+      console.log('Registering user:', values);
     }
   };
 
@@ -53,70 +72,78 @@ const AuthModal = ({ isOpen, onClose }) => {
               </p>
             </div>
           </div>
-          <form onSubmit={(e) => e.preventDefault()}>
-            {isRegister && (
-              <>
-                
+
+          <Formik
+            initialValues={{
+              email: '',
+              username: '',
+              password: '',
+              confirmPassword: '',
+              isRegister: isRegister,
+            }}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ values }) => (
+              <Form>
+                {isRegister && (
+                  <div>
+                    <Field
+                      type="email"
+                      name="email"
+                      placeholder="Enter your email address"
+                      className="w-full mt-4 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-color shadow-sm rounded-md"
+                    />
+                    <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                )}
+
                 <div>
-                  <input
-                    type="email"
-                    name='email'
-                    placeholder='Enter your email address'
-                    required
+                  <Field
+                    type="text"
+                    name="username"
+                    placeholder="Username"
                     className="w-full mt-4 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-color shadow-sm rounded-md"
                   />
+                  <ErrorMessage name="username" component="div" className="text-red-500 text-sm mt-1" />
                 </div>
-              </>
+
+                <div className='relative'>
+                  <Field
+                    type={viewPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Password"
+                    className="w-full mt-4 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-color shadow-sm rounded-md"
+                  />
+                  <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
+                  <BiHide size={25} className={`${viewPassword ? 'hidden' : 'absolute bottom-[1rem] right-2 cursor-pointer'}`} onClick={handlePasswordView} />
+                  <GrView size={25} className={`${viewPassword ? 'absolute bottom-[1rem] right-2 cursor-pointer' : 'hidden'}`} onClick={handlePasswordView} />
+                </div>
+
+                {isRegister && (
+                  <div className='relative mb-10'>
+                    <Field
+                      type={viewPassword ? "text" : "password"}
+                      name="confirmPassword"
+                      placeholder="Confirm Password"
+                      className="w-full mt-4 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-color shadow-sm rounded-md"
+                    />
+                    <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-sm mt-1" />
+                  </div>
+                )}
+
+                {!isRegister && (
+                  <p className='text-[14px] text-primary-color text-right mt-[14px] mb-7'>
+                    Forgot Password?
+                  </p>
+                )}
+
+                <button type="submit" className="w-full px-4 py-2 text-white font-medium bg-primary-color rounded-lg duration-150">
+                  {isRegister ? "Register" : "Login"}
+                </button>
+              </Form>
             )}
-
-            <div>
-                <input
-                type="text"
-                name='username'
-                placeholder='Username'
-                required
-                className="w-full mt-4 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-color shadow-sm rounded-md"
-                />
-            </div>
-
-            {/* Password Input */}
-            <div className='relative'>
-              <input
-                type={viewPassword ? "text" : "password"}
-                name='password'
-                placeholder={isRegister ? 'Password' : 'Password'}
-                required
-                className="w-full mt-4 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-color shadow-sm rounded-md"
-              />
-              <BiHide size={25} className={`${viewPassword ? 'hidden' : 'absolute bottom-2 right-2 cursor-pointer'}`} onClick={handlePasswordView} />
-              <GrView size={25} className={`${viewPassword ? 'absolute bottom-2 right-2 cursor-pointer' : 'hidden'}`} onClick={handlePasswordView} />
-            </div>
-
-            {/* Confirm Password input for Register mode */}
-            {isRegister && (
-              <div className='relative mb-10'>
-                <input
-                  type={viewPassword ? "text" : "password"}
-                  name='confirmPassword'
-                  placeholder='Confirm Password'
-                  required
-                  className="w-full mt-4 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-color shadow-sm rounded-md"
-                />
-              </div>
-            )}
-
-            {/* Forgot Password link for Login mode */}
-            {!isRegister && (
-              <p className='text-[14px] text-primary-color text-right mt-[14px] mb-7'>
-                Forgot Password?
-              </p>
-            )}
-
-            {/* Submit Button */}
-            <button className="w-full px-4 py-2 text-white font-medium bg-primary-color rounded-lg duration-150" onClick={handleButtonClick}>
-              {isRegister ? "Register" : "Login"}
-            </button>
-          </form>
+          </Formik>
 
           <div className="relative mt-11 mb-7">
             <span className="block w-full h-px bg-gray-300"></span>
@@ -125,7 +152,6 @@ const AuthModal = ({ isOpen, onClose }) => {
             </p>
           </div>
 
-          {/* Social Login Buttons */}
           <div className="space-y-4 text-sm font-medium">
             <button className="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100">
               <Google />

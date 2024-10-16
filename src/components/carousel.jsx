@@ -46,9 +46,9 @@ const Carousel = () => {
             {/* Slide 1 */}
             <div className="glide__slide flex flex-row">
               <div className="my-auto md:my-0 flex-grow font-custom mb-6 md:mb-0 text-start">
-                <p className="w-full text-[10px] md:text-base mt-0 md:mt-20">Welcome to GreenShop</p>
+                <p className="w-full text-[10px] md:text-base mt-0 md:mt-20 md:leading-[16px] md:tracking-[0.1em]">WELCOME TO GREENSHOP</p>
                 <div className="w-full md:w-[530px] h-auto">
-                  <p className="text-xl md:text-[70px] font-black leading-tight">LET’S MAKE A BETTER <span className='text-primary-color'>PLANET</span></p>
+                  <p className="text-xl md:text-[70px] font-black md:leading-[70px]">LET’S MAKE A BETTER <span className='text-primary-color'>PLANET</span></p>
                 </div>
                 <div className="w-full md:w-[550px]">
                   <p className="hidden md:block md:text-sm ">We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!</p>
@@ -152,3 +152,4 @@ const Carousel = () => {
 }
 
 export default Carousel;
+

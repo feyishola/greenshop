@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import img1 from '../assets/image 1.svg'
-import img2 from '../assets/product-20-320x320 1.svg';
-import img3 from '../assets/image 10.svg'
+import { Link, useLocation } from 'react-router-dom';
 import paymenttype from "../assets/paymenttype.svg";
 import card1 from "../assets/Group 91.svg"
 import card2 from "../assets/Group 92.svg"
@@ -14,6 +11,10 @@ const Checkout = () => {
 
     const [isModalOpen, setModalOpen] = useState(false);
 
+    const location = useLocation();
+
+    const {data,sumTotal} = location.state
+
     const handleOpenModal = () => {
       setModalOpen(true);
     };
@@ -21,34 +22,6 @@ const Checkout = () => {
     const handleCloseModal = () => {
       setModalOpen(false);
     };
-
-
-    const [data] = useState([
-        {
-          url: img1,
-          productname: 'Barberton Daisy',
-          sku: 'SKU: 1995751877966',
-          price: '$25',
-          quantity: 2,
-          total: '$50',
-        },
-        {
-          url: img2,
-          productname: 'Blushing Bromeliad',
-          sku: 'SKU: 1995751877965',
-          price: '$40',
-          quantity: 1,
-          total: '$40',
-        },
-        {
-          url: img3,
-          productname: 'Aluminum Plant',
-          sku: 'SKU: 1995751877963',
-          price: '$15',
-          quantity: 3,
-          total: '$45',
-        },
-      ]);
 
 
   return (
@@ -273,7 +246,7 @@ const Checkout = () => {
                 </div>
                 {/* productlists */}
 
-                {data.map((info, index) => {
+                {data?.map((info, index) => {
                         return (
                         <div
                             key={index}
@@ -308,7 +281,7 @@ const Checkout = () => {
                     <div className="w-full flex flex-col space-y-3 mb-[29px]">
                         <div className="flex justify-between text-sm md:text-base cursor-pointer">
                             <p>Subtotal</p>
-                            <p>$2,683.00</p>
+                            <p>${sumTotal}</p>
                         </div>
                         <div className="flex justify-between text-sm md:text-base cursor-pointer">
                             <p>Coupon Discount</p>
@@ -321,7 +294,7 @@ const Checkout = () => {
                         <p className='text-right text-primary-color text-[12px]'>View shipping charge</p>
                         <div className="flex justify-between text-sm md:text-base cursor-pointer ">
                             <p className='text-base font-bold'>Total</p>
-                            <p className='text-[18px] font-bold text-primary-color'>$2,699.00</p>
+                            <p className='text-[18px] font-bold text-primary-color'>${sumTotal + 16}</p>
                         </div>
                     </div>
                     
