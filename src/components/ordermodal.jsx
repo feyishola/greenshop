@@ -1,12 +1,10 @@
 import React from 'react'
 import { IoMdClose } from "react-icons/io";
 import thankyou from '../assets/thank-you 1.svg'
-import img1 from '../assets/image 1.svg'
-import img2 from '../assets/product-20-320x320 1.svg';
-import img3 from '../assets/image 10.svg'
 
 
-const OrderModal = ({ isOpen, onClose }) => {
+
+const OrderModal = ({ isOpen, onClose, data, sumTotal}) => {
     if (!isOpen) return null;
 
     return (
@@ -81,7 +79,7 @@ const OrderModal = ({ isOpen, onClose }) => {
                     </div>
                     <div className="flex justify-between text-sm md:text-base cursor-pointer ">
                       <p className='text-base font-bold'>Total</p>
-                      <p className='text-[18px] font-bold text-primary-color'>$2,699.00</p>
+                      <p className='text-[18px] font-bold text-primary-color'>${sumTotal + 16}</p>
                     </div>
                   </div>
                 </div>
@@ -101,29 +99,29 @@ export default OrderModal;
 
 
 
-const data = [
-  {
-    url: img1,
-    productname: 'Barberton Daisy',
-    sku: 'SKU: 1995751877966',
-    price: '$25',
-    quantity: 2,
-    total: '$50',
-  },
-  {
-    url: img2,
-    productname: 'Blushing Bromeliad',
-    sku: 'SKU: 1995751877965',
-    price: '$40',
-    quantity: 1,
-    total: '$40',
-  },
-  {
-    url: img3,
-    productname: 'Aluminum Plant',
-    sku: 'SKU: 1995751877963',
-    price: '$15',
-    quantity: 3,
-    total: '$45',
-  },
-]
+// const data = [
+//   {
+//     url: img1,
+//     productname: 'Barberton Daisy',
+//     sku: 'SKU: 1995751877966',
+//     price: '$25',
+//     quantity: 2,
+//     total: '$50',
+//   },
+//   {
+//     url: img2,
+//     productname: 'Blushing Bromeliad',
+//     sku: 'SKU: 1995751877965',
+//     price: '$40',
+//     quantity: 1,
+//     total: '$40',
+//   },
+//   {
+//     url: img3,
+//     productname: 'Aluminum Plant',
+//     sku: 'SKU: 1995751877963',
+//     price: '$15',
+//     quantity: 3,
+//     total: '$45',
+//   },
+// ]

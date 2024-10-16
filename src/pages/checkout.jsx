@@ -339,7 +339,7 @@ const Checkout = () => {
 
                     <button className='bg-primary-color text-white w-full p-3 rounded-md' onClick={handleOpenModal}>Place Order</button>
                 </div>
-                <OrderModal isOpen={isModalOpen} onClose={handleCloseModal}/>
+                <OrderModal isOpen={isModalOpen} onClose={handleCloseModal} data={data} sumTotal={sumTotal}/>
             </div>
             
         </div>
