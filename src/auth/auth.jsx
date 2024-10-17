@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoMdClose } from "react-icons/io";
 import { ReactComponent as Facebook } from "../assets/facebook 1.svg";
 import { ReactComponent as Google } from "../assets/google 1.svg";
@@ -7,15 +7,26 @@ import { GrView } from "react-icons/gr";
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { register, login } from '../store/redux-slice/authSlice';
 
 const AuthModal = ({ isOpen, onClose }) => {
   const [viewPassword, setViewPassword] = useState(false);
   const [isRegister, setIsRegister] = useState(false); 
   const navigate = useNavigate();
 
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  const dispatch = useDispatch();
+
   const handlePasswordView = () => {
     setViewPassword(!viewPassword);
   };
+
+  useEffect(()=>{
+    if(isLoggedIn)
+    navigate('/account'); 
+  },[isRegister, isLoggedIn, navigate])
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").when("isRegister", {
@@ -36,10 +47,13 @@ const AuthModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = (values) => {
     if (!isRegister) {
-      navigate('/account'); 
+
+      dispatch(login(values));
+
     } else {
-      
-      console.log('Registering user:', values);
+
+      dispatch(register(values));
+      alert("Registration successful");
     }
   };
 

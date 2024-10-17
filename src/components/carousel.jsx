@@ -40,7 +40,7 @@ const Carousel = () => {
   return (
     <div className='px-5 md:px-0'>
       {/* Hero section */}
-      <div className="glide w-full h-auto md:bg-[#F5F5F5] bg-[#E4F2E7] rounded-3xl md:rounded-none mt-[10px] p-4 md:p-8 ">
+      <div className="glide w-full h-auto md:bg-[#F5F5F5] bg-[#E4F2E7] rounded-3xl md:rounded-none mt-[10px] p-4 md:p-8 dark:bg-dark-primary dark:text-dark-text">
         <div className="glide__track" data-glide-el="track">
           <div className="glide__slides">
             {/* Slide 1 */}

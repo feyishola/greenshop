@@ -9,6 +9,8 @@ import { CiShoppingCart } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { IoIosLogOut } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
+import { logout } from '../store/redux-slice/authSlice';
+import { useDispatch } from 'react-redux';
 
 const navItems = [
     {icon:<IoPersonOutline />, label:"Account Details"},
@@ -24,10 +26,16 @@ const AccountDetails = () => {
 
     const [activeIndex, setActiveIndex] = useState(0);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleNavClick = (index) => {
         setActiveIndex(index); 
       };
+
+    const handleLogout = ()=>{
+        dispatch(logout());
+        navigate('/');
+    }
 
   return (
     <div className='flex flex-col mt-5 md:mt-16'>
@@ -54,7 +62,7 @@ const AccountDetails = () => {
                         ))}
                     </ul>
                     <hr/>
-                    <button className="flex items-center align-middle space-x-1  text-primary-color px-4 mt-2" onClick={()=>{navigate("/")}}>
+                    <button className="flex items-center align-middle space-x-1  text-primary-color px-4 mt-2" onClick={handleLogout}>
                         <IoIosLogOut size={20} />
                         <span>Logout</span>
                     </button>

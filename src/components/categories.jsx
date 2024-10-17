@@ -51,7 +51,7 @@ const Categories = () => {
     };
   
     return (
-      <div className='flex flex-col'>
+      <div className='flex flex-col '>
         <div className='w-full flex flex-col md:flex-row gap-10 mt-7'>
     
           {/* Right Side Section - Hidden on Small Screens */}

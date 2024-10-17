@@ -5,6 +5,9 @@ import { IoIosLogOut } from "react-icons/io";
 import { PiSlidersHorizontal } from "react-icons/pi";
 import { useNavigate } from 'react-router-dom';
 import AuthModal from '../auth/auth';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { toggleTheme } from '../store/redux-slice/themeslice';
+// import { FaSun, FaMoon } from 'react-icons/fa';
 
 
 
@@ -12,6 +15,9 @@ const Navbar = () => {
   // const [menuOpen, setMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState("Home"); 
   const navigate = useNavigate();
+
+  // const dispatch = useDispatch();
+  // const darkMode = useSelector((state) => state.theme.darkMode);
 
   // const toggleMenu = () => {
   //   setMenuOpen(!menuOpen);
@@ -39,8 +45,18 @@ const Navbar = () => {
     }
   };
 
+  
+// Apply the dark class to the root element based on the theme state
+  // useEffect(() => {
+  //   if (darkMode) {
+  //     document.documentElement.classList.add('dark');
+  //   } else {
+  //     document.documentElement.classList.remove('dark');
+  //   }
+  // }, [darkMode]);
+
   return (
-    <nav className="w-full md:border-b md:border-gray-300">
+    <nav className="w-full md:border-b md:border-gray-300 dark:text-dark-text dark:bg-dark-primary">
       <div className="hidden md:flex items-center justify-between h-[53px] px-4 lg:px-8 max-w-[1400px] mx-auto">
         {/* Logo */}
         <div className="flex-shrink-0">
@@ -76,6 +92,19 @@ const Navbar = () => {
             <IoIosLogOut size={20} />
             <span>Login</span>
           </button>
+
+          
+            {/* Conditional Icon */}
+            {/* {darkMode ? (
+              <>
+                <FaSun className="text-yellow-500 cursor-pointer" onClick={() => dispatch(toggleTheme())}/> 
+              </>
+            ) : (
+              <>
+                <FaMoon className="text-blue-500 cursor-pointer" onClick={() => dispatch(toggleTheme())}/> 
+              </>
+            )} */}
+
         </div>
 
         {/* Mobile Menu Toggle */}
